@@ -69,13 +69,14 @@ gulp.task('rollup:fesm', function () {
 
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
-      entry: `${buildFolder}/index.js`,
+      input: `${buildFolder}/index.js`,
 
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
-        '@angular/common'
+        '@angular/common',
+        '@angular/forms'
       ],
 
       // Format of generated bundle
@@ -96,13 +97,14 @@ gulp.task('rollup:umd', function () {
 
       // Bundle's entry point
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#entry
-      entry: `${buildFolder}/index.js`,
+      input: `${buildFolder}/index.js`,
 
       // A list of IDs of modules that should remain external to the bundle
       // See https://github.com/rollup/rollup/wiki/JavaScript-API#external
       external: [
         '@angular/core',
-        '@angular/common'
+        '@angular/common',
+        '@angular/forms'
       ],
 
       // Format of generated bundle
@@ -172,10 +174,10 @@ gulp.task('compile', function () {
   runSequence(
     'clean:dist',
     'copy:source',
-    'inline-resources',
+    // 'inline-resources',
     'ngc',
     'rollup:fesm',
-    'rollup:umd',
+    // 'rollup:umd',
     'copy:build',
     'copy:manifest',
     'copy:readme',
